@@ -1,0 +1,68 @@
+{% macro headline(items) -%}
+{% if items %}<div class="headline">{% for w in items %}<span class="nw">{{ w }}</span>{% if not loop.last %}<span class="sep">/</span> {% endif %}{% endfor %}</div>{% endif %}
+{%- endmacro %}
+
+{% macro stats(items) -%}
+{% if items %}
+<div class="stats">
+  {% for s in items %}
+  <div class="stat goldbar"><i class="big-num">{{ s.value }}</i><span class="lbl">{{ s.label }}</span>{% if s.note %}<span class="note">{{ s.note }}</span>{% endif %}</div>
+  {% endfor %}
+</div>
+{% endif %}
+{%- endmacro %}
+
+{% macro jobs(items) -%}
+{% if items %}
+<div class="timeline">
+  {% for e in items %}
+  <article class="job">
+    <h3>{{ e.title }}</h3>
+    <div class="meta">{{ e.org }}{% if e.location %} · {{ e.location }}{% endif %}{% if e.start or e.end %} · {{ e.start }}{% if e.end %} – {{ e.end }}{% endif %}{% endif %}</div>
+    {% if e.bullets %}<ul>{% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+  </article>
+  {% endfor %}
+</div>
+{% endif %}
+{%- endmacro %}
+
+{% macro icon(name) -%}
+{% if name == 'code' %}
+<svg viewBox="0 0 150 110" fill="none" stroke="#cfaa5d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="15" y="12" width="120" height="80" rx="6"/><path d="M15 28h120"/><circle cx="26" cy="20" r="2"/><circle cx="36" cy="20" r="2"/><path d="M55 48l-14 14 14 14M95 48l14 14-14 14M82 42l-14 42"/></svg>
+{% elif name == 'pipeline' %}
+<svg viewBox="0 0 150 110" fill="none" stroke="#cfaa5d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="22" cy="55" r="12"/><rect x="58" y="41" width="34" height="28" rx="4"/><path d="M116 43l12 12-12 12"/><path d="M34 55h24M92 55h36" stroke-dasharray="2 8"/><path d="M75 41V22h-40M75 69v19h40"/><circle cx="35" cy="22" r="4"/><circle cx="115" cy="88" r="4"/></svg>
+{% elif name == 'cloud' %}
+<svg viewBox="0 0 150 110" fill="none" stroke="#cfaa5d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M42 62a18 18 0 0 1 3-36 26 26 0 0 1 49-6 20 20 0 0 1 16 39"/><rect x="40" y="66" width="70" height="14" rx="3"/><rect x="40" y="84" width="70" height="14" rx="3"/><circle cx="50" cy="73" r="2"/><circle cx="50" cy="91" r="2"/><path d="M88 73h14M88 91h14"/></svg>
+{% endif %}
+{%- endmacro %}
+
+{% macro layers(items, footer) -%}
+<div class="layers">
+  <div class="layer-row">
+    {% for c in items %}
+    <div class="layer-col">
+      <span class="pre">{{ c.pre }}</span><span class="ttl">{{ c.title }}</span><span class="post">{{ c.post }}</span>
+      {{ icon(c.icon) }}
+      {% for g in c.groups %}
+      <ul>{% if g.head %}<li class="nb">{{ g.head }}</li>{% endif %}{% for i in g['items'] %}<li>{{ i }}</li>{% endfor %}</ul>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+  {% if footer %}<div class="layer-flow"><p><b>I define</b>{{ footer }}</p></div><div class="layer-flow-space"></div>{% endif %}
+</div>
+{%- endmacro %}
+
+{% macro project_cards(items) -%}
+<div class="cards">
+  {% for p in items %}
+  <a class="card" href="{{ url_for('public.project', slug=p.slug) }}">
+    {% if p.image %}<div class="thumb"><img src="{{ media_url(p.image) }}" alt="" loading="lazy" width="480" height="320"></div>{% endif %}
+    <h3>{{ p.title }}</h3>
+    <div class="meta">{{ p.year }}{% if p.context %} · {{ p.context }}{% endif %}</div>
+    <p>{{ p.summary }}</p>
+    <span class="more">View architecture →</span>
+  </a>
+  {% endfor %}
+</div>
+{%- endmacro %}

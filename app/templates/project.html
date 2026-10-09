@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}{{ p.title }} | {{ content.profile.first_name }} {{ content.profile.last_name }}{% endblock %}
+{% block description %}{{ p.summary }}{% endblock %}
+{% block content %}
+<div class="crumbs"><a href="{{ url_for('public.index') }}#projects">← All projects</a></div>
+
+<article class="section" aria-labelledby="ptitle">
+  <h2 id="ptitle">{{ p.title }}</h2>
+  <p class="meta-line"><span class="badge">{{ p.year }}</span>{{ p.context }}</p>
+
+  {% if p.image %}
+  <figure class="arch">
+    <img src="{{ media_url(p.image) }}" alt="Architecture of {{ p.title }}" width="960" height="640">
+    <figcaption>Architecture</figcaption>
+  </figure>
+  {% endif %}
+
+  {% for para in (p.details or p.summary) | paragraphs %}<p>{{ para }}</p>{% endfor %}
+
+  {% if p.results %}
+  <h3 class="subhead">Results</h3>
+  <ul class="results">{% for r in p.results %}<li>{{ r }}</li>{% endfor %}</ul>
+  {% endif %}
+
+  {% if p.tags %}
+  <h3 class="subhead">Stack</h3>
+  <ul class="tags">{% for t in p.tags %}<li>{{ t }}</li>{% endfor %}</ul>
+  {% endif %}
+
+  {% if p.link %}<p><a class="btn" href="{{ link(p.link) }}" rel="noopener noreferrer" target="_blank">View project</a></p>{% endif %}
+
+  <nav class="pager" aria-label="More projects">
+    <span>{% if prev_p %}<a href="{{ url_for('public.project', slug=prev_p.slug) }}">← {{ prev_p.title }}</a>{% endif %}</span>
+    <span>{% if next_p %}<a href="{{ url_for('public.project', slug=next_p.slug) }}">{{ next_p.title }} →</a>{% endif %}</span>
+  </nav>
+</article>
+{% endblock %}

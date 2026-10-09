@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% import "partials/blocks.html" as b with context %}
+{% block content %}
+<p class="intro">{{ content.profile.intro }}</p>
+
+{% for s in content.sections %}
+<section class="section" id="{{ s.slug }}" aria-labelledby="h-{{ s.slug }}">
+  <h2 id="h-{{ s.slug }}">{{ s.title }}</h2>
+
+  {% for para in s.text | paragraphs %}<p>{{ para }}</p>{% endfor %}
+  {{ b.headline(s.headline) }}
+  {{ b.stats(s.stats) }}
+
+  {% for cat in s.categories %}{{ b.jobs(experience_by_cat.get(cat, [])) }}{% endfor %}
+
+  {% if s.show_layers and content.layers %}{{ b.layers(content.layers, s.layers_footer) }}{% endif %}
+
+  {% if s.show_skills and content.skills %}
+  <div class="skills">
+    {% for g in content.skills %}
+    <div><h3>{{ g.group }}</h3><ul class="tags">{% for i in g['items'] %}<li>{{ i }}</li>{% endfor %}</ul></div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if s.show_projects %}{{ b.project_cards(content.projects) }}{% endif %}
+
+  {% if s.show_education %}
+  <div class="edu">
+    {% for e in content.education %}
+    <article class="job">
+      <h3>{{ e.degree }}</h3>
+      <div class="meta">{{ e.school }}{% if e.location %} · {{ e.location }}{% endif %}{% if e.start or e.end %} · {{ e.start }}{% if e.end %} – {{ e.end }}{% endif %}{% endif %}</div>
+      {% if e.notes %}<ul>{% for n in e.notes %}<li>{{ n }}</li>{% endfor %}</ul>{% endif %}
+    </article>
+    {% endfor %}
+  </div>
+  <div class="cols">
+    {% if content.certifications %}
+    <div>
+      <h3 class="subhead">Certifications</h3>
+      <ul class="list-plain">
+        {% for c in content.certifications %}
+        <li>{% if c.url %}<a href="{{ c.url }}" rel="noopener noreferrer" target="_blank"><b>{{ c.title }}</b></a>{% else %}<b>{{ c.title }}</b>{% endif %}{% if c.issuer %}, {{ c.issuer }}{% endif %}{% if c.date %}, {{ c.date }}{% endif %}.</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    {% if content.languages %}
+    <div>
+      <h3 class="subhead">Languages</h3>
+      <ul class="list-plain">
+        {% for l in content.languages %}<li><b>{{ l.name }}</b> — {{ l.level }}</li>{% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% if s.button_label and s.button_url %}
+  <p><a class="btn" href="{{ link(s.button_url) }}">{{ s.button_label }}</a></p>
+  {% endif %}
+</section>
+{% endfor %}
+{% endblock %}

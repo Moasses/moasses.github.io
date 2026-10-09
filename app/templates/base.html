@@ -1,0 +1,81 @@
+{% set pr = content.profile %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% if static_export %}
+  <meta http-equiv="Content-Security-Policy" content="{{ export_csp }}">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  {% endif %}
+  <title>{% block title %}{{ pr.site_title or (pr.first_name ~ ' ' ~ pr.last_name) }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ pr.meta_description }}{% endblock %}">
+  <meta name="author" content="{{ pr.first_name }} {{ pr.last_name }}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ self.title() }}">
+  <meta property="og:description" content="{{ self.description() }}">
+  {% if site_url %}
+  <link rel="canonical" href="{{ site_url }}{{ request.path }}">
+  <meta property="og:url" content="{{ site_url }}{{ request.path }}">
+  {% endif %}
+  <meta name="theme-color" content="#273983">
+  <link rel="icon" href="{{ url_for('static', filename='img/favicon.svg') }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <details class="menu-wrap">
+    <summary aria-label="Menu"><i></i><i></i><i></i></summary>
+    <nav class="menu" aria-label="Main menu">
+      <ul>
+        <li><a href="{{ url_for('public.index') }}">Home</a></li>
+        {% for s in content.sections %}
+        <li><a href="{{ url_for('public.index') }}#{{ s.slug }}">{{ s.title | replace('As a ', '') | replace('As an ', '') }}</a></li>
+        {% endfor %}
+        <li><a href="{{ url_for('public.publications') }}">Publications</a></li>
+      </ul>
+      <div class="contact">
+        {% if pr.email %}<a href="mailto:{{ pr.email }}">{{ pr.email }}</a>{% endif %}
+        {% if pr.phone and pr.show_phone %}<a href="tel:{{ pr.phone | replace(' ', '') }}">{{ pr.phone }}</a>{% endif %}
+        {% if pr.linkedin %}<a href="{{ pr.linkedin }}" rel="noopener noreferrer me" target="_blank">LinkedIn</a>{% endif %}
+        {% if pr.github %}<a href="{{ pr.github }}" rel="noopener noreferrer me" target="_blank">GitHub</a>{% endif %}
+        {% if pr.scholar %}<a href="{{ pr.scholar }}" rel="noopener noreferrer" target="_blank">Google Scholar</a>{% endif %}
+        {% if pr.cv_file %}<a href="{{ media_url(pr.cv_file) }}" target="_blank" rel="noopener">CV (PDF)</a>{% endif %}
+      </div>
+    </nav>
+  </details>
+
+  <div class="page">
+    <header class="hero">
+      <div class="portrait-wrap">
+        <div class="title-area">
+          <h1><a href="{{ url_for('public.index') }}"><span class="first">{{ pr.first_name }}</span>{{ pr.last_name }}</a></h1>
+          <div class="roles">{% for r in pr.roles %}<span>{{ r }}</span>{% endfor %}</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content" id="main">
+      {% block content %}{% endblock %}
+      <footer class="footer">
+        <span>{{ pr.footer | replace('{year}', year|string) }}</span>
+        <nav aria-label="Footer">
+          {% if pr.email %}<a href="mailto:{{ pr.email }}">{{ pr.email }}</a>{% endif %}
+          {% if content.legal.show_imprint %}
+          <a href="{{ url_for('public.imprint') }}">Imprint</a>
+          <a href="{{ url_for('public.privacy') }}">Privacy</a>
+          {% endif %}
+        </nav>
+      </footer>
+    </main>
+  </div>
+
+  {% if portrait %}
+  <script type="application/json" id="portrait-data">{{ portrait | tojson }}</script>
+  <script src="{{ url_for('static', filename='js/portrait.js') }}" defer></script>
+  {% endif %}
+  <script src="{{ url_for('static', filename='js/site.js') }}" defer></script>
+</body>
+</html>

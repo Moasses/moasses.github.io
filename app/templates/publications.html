@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Publications | {{ content.profile.first_name }} {{ content.profile.last_name }}{% endblock %}
+{% block content %}
+<div class="crumbs"><a href="{{ url_for('public.index') }}">← Home</a></div>
+
+<section class="section" aria-labelledby="h-pubs">
+  <h2 id="h-pubs">Publications</h2>
+  <div class="stats">
+    <div class="stat goldbar"><i class="big-num">{{ total }}</i><span class="lbl">Publications &amp; theses</span>
+      <span class="note">{% for k, n in counts.items() %}{{ n }} {{ labels.get(k, k) | lower }}{% if not loop.last %} · {% endif %}{% endfor %}</span></div>
+  </div>
+  {% if content.profile.scholar %}<p><a class="btn" href="{{ content.profile.scholar }}" rel="noopener noreferrer" target="_blank">Google Scholar profile</a></p>{% endif %}
+
+  {% if counts | length > 1 %}
+  <div class="filters hidden" role="group" aria-label="Filter by type">
+    <button type="button" data-k="all" class="on" aria-pressed="true">All</button>
+    {% for k in counts %}<button type="button" data-k="{{ k }}" aria-pressed="false">{{ labels.get(k, k) }}</button>{% endfor %}
+  </div>
+  {% endif %}
+
+  {% for y, items in years %}
+  <div class="pub-group">
+    <div class="pub-year">{{ y }}</div>
+    {% for p in items %}
+    <div class="pub" data-type="{{ p.type }}">
+      <div class="t">{% if p.url %}<a href="{{ link(p.url) }}" rel="noopener noreferrer" target="_blank">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</div>
+      {% if p.authors %}<div class="a">{{ p.authors }}</div>{% endif %}
+      <div class="v"><span class="badge">{{ labels.get(p.type, p.type) }}</span>{{ p.venue }}</div>
+      {% if p.award %}<div class="award">★ {{ p.award }}</div>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p>No publications yet.</p>
+  {% endfor %}
+</section>
+{% endblock %}
