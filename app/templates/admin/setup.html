@@ -1,0 +1,11 @@
+{% extends "admin/base.html" %}
+{% block title %}Set up admin{% endblock %}
+{% block auth %}
+<div class="card">
+  <h1>Admin not set up yet</h1>
+  <p>For security, the admin account can only be created from the server's command line:</p>
+  <pre>python manage.py create-admin</pre>
+  <p class="muted">On the Docker server: <code>docker compose exec web python manage.py create-admin</code></p>
+  <p>Then reload this page.</p>
+</div>
+{% endblock %}

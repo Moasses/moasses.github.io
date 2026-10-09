@@ -1,0 +1,12 @@
+{% extends "admin/base.html" %}
+{% block title %}Two-factor code{% endblock %}
+{% block auth %}
+<form method="post" class="card" autocomplete="off">
+  <h1>Two-factor code</h1>
+  <input type="hidden" name="{{ csrf_field }}" value="{{ csrf_token }}">
+  <label for="c">6-digit code from your authenticator app</label>
+  <input id="c" name="code" inputmode="numeric" pattern="[0-9 ]{6,7}" maxlength="7" autocomplete="one-time-code" required autofocus>
+  <button class="btn">Sign in</button>
+  <p class="muted"><a href="{{ url_for('admin.login') }}">← Start again</a></p>
+</form>
+{% endblock %}

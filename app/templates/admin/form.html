@@ -1,0 +1,47 @@
+{% extends "admin/base.html" %}
+{% block title %}{{ coll.label }}{% endblock %}
+{% block content %}
+<p><a href="{{ url_for('admin.collection', key=coll.key) if not coll.single else url_for('admin.dashboard') }}">← {{ coll.label }}</a></p>
+<h1>{% if coll.single %}{{ coll.label }}{% elif is_new %}Add to {{ coll.label }}{% else %}Edit{% endif %}</h1>
+{% if coll.description %}<p class="muted">{{ coll.description }}</p>{% endif %}
+<form method="post" class="form">
+  <input type="hidden" name="{{ csrf_field }}" value="{{ csrf_token }}">
+  {% for f in coll.fields %}
+  {% set v = values.get(f.name, '') %}
+  <div class="field {{ f.kind }}">
+    {% if f.kind == 'bool' %}
+      <label class="check"><input type="checkbox" name="{{ f.name }}" {% if v in (true, 'on') %}checked{% endif %}> {{ f.label }}</label>
+    {% else %}
+      <label for="f-{{ f.name }}">{{ f.label }}{% if f.required %} *{% endif %}</label>
+      {% if f.kind in ('textarea',) %}
+        <textarea id="f-{{ f.name }}" name="{{ f.name }}" rows="{{ 10 if f.max_len > 2000 else 5 }}" maxlength="{{ f.max_len }}">{{ v }}</textarea>
+      {% elif f.kind in ('lines', 'stats', 'groups') %}
+        <textarea id="f-{{ f.name }}" name="{{ f.name }}" rows="{{ [ (v|string).count('\n') + 2, 4 ] | max }}" class="mono">{{ v }}</textarea>
+      {% elif f.kind == 'select' %}
+        <select id="f-{{ f.name }}" name="{{ f.name }}">
+          {% for val, lab in f.choices %}<option value="{{ val }}" {% if v == val %}selected{% endif %}>{{ lab }}</option>{% endfor %}
+        </select>
+      {% elif f.kind == 'media' %}
+        <select id="f-{{ f.name }}" name="{{ f.name }}">
+          <option value="">— none —</option>
+          {% for m in media_choices %}<option value="{{ m }}" {% if v == m %}selected{% endif %}>{{ m.split(':',1)[1] }}</option>{% endfor %}
+        </select>
+        {% if v %}<img class="preview" src="{{ media_url(v) }}" alt="">{% endif %}
+      {% elif f.kind == 'file' %}
+        <select id="f-{{ f.name }}" name="{{ f.name }}">
+          <option value="">— none —</option>
+          {% for m in file_choices %}<option value="{{ m }}" {% if v == m %}selected{% endif %}>{{ m.split(':',1)[1] }}</option>{% endfor %}
+        </select>
+      {% elif f.kind == 'int' %}
+        <input id="f-{{ f.name }}" name="{{ f.name }}" type="number" value="{{ v }}" min="-9999" max="9999">
+      {% else %}
+        <input id="f-{{ f.name }}" name="{{ f.name }}" value="{{ v }}" maxlength="{{ 500 if f.kind == 'url' else f.max_len }}"
+               {% if f.kind == 'email' %}type="email"{% elif f.kind == 'url' %}inputmode="url"{% endif %} {% if f.required and f.kind != 'slug' %}required{% endif %}>
+      {% endif %}
+    {% endif %}
+    {% if f.help %}<small>{{ f.help }}</small>{% endif %}
+  </div>
+  {% endfor %}
+  <div class="bar"><button class="btn">Save</button></div>
+</form>
+{% endblock %}

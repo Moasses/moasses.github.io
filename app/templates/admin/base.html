@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>{% block title %}Admin{% endblock %} · {{ content.profile.first_name }}'s site</title>
+  <link rel="icon" href="{{ url_for('static', filename='img/favicon.svg') }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body class="{% block bodyclass %}{% endblock %}">
+{% if session.get('admin') %}
+<header class="top">
+  <a class="brand" href="{{ url_for('admin.dashboard') }}">⚙ Site admin</a>
+  <nav>
+    <a href="{{ url_for('public.index') }}" target="_blank" rel="noopener">View site ↗</a>
+    <form method="post" action="{{ url_for('admin.logout') }}" class="inline">
+      <input type="hidden" name="{{ csrf_field }}" value="{{ csrf_token }}">
+      <button class="link">Sign out</button>
+    </form>
+  </nav>
+</header>
+<div class="shell">
+  <aside class="side">
+    <a href="{{ url_for('admin.dashboard') }}">Dashboard</a>
+    <span class="group">Content</span>
+    {% for c in collections %}<a href="{{ url_for('admin.collection', key=c.key) }}" {% if coll is defined and coll.key == c.key %}aria-current="page"{% endif %}>{{ c.label }}</a>{% endfor %}
+    <span class="group">Tools</span>
+    <a href="{{ url_for('admin.media') }}">Media &amp; CV</a>
+    <a href="{{ url_for('admin.history') }}">History / undo</a>
+    <a href="{{ url_for('admin.account_page') }}">Password</a>
+    <a href="{{ url_for('admin.audit_page') }}">Audit log</a>
+  </aside>
+  <main class="main">
+    {% with msgs = get_flashed_messages() %}{% for m in msgs %}<p class="flash" role="status">{{ m }}</p>{% endfor %}{% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+</div>
+{% else %}
+<main class="auth">
+  {% with msgs = get_flashed_messages() %}{% for m in msgs %}<p class="flash" role="alert">{{ m }}</p>{% endfor %}{% endwith %}
+  {% block auth %}{% endblock %}
+</main>
+{% endif %}
+</body>
+</html>

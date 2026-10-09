@@ -1,0 +1,11 @@
+{% extends "admin/base.html" %}
+{% block title %}Delete{% endblock %}
+{% block content %}
+<h1>Delete “{{ item[coll.title_field] }}”?</h1>
+<p>It will be removed from the website. You can bring it back from <a href="{{ url_for('admin.history') }}">History</a>.</p>
+<form method="post" class="row">
+  <input type="hidden" name="{{ csrf_field }}" value="{{ csrf_token }}">
+  <button class="btn danger">Yes, delete</button>
+  <a class="btn secondary" href="{{ url_for('admin.collection', key=coll.key) }}">Cancel</a>
+</form>
+{% endblock %}

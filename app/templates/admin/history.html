@@ -1,0 +1,17 @@
+{% extends "admin/base.html" %}
+{% block title %}History{% endblock %}
+{% block content %}
+<h1>History</h1>
+<p class="muted">A backup is saved automatically before every change (last 50 kept). Restoring also saves the current state first, so nothing is ever lost.</p>
+<ol class="items">
+  {% for n in items %}
+  <li>
+    <div class="txt"><b>{{ n[8:12] }}-{{ n[12:14] }}-{{ n[14:16] }} {{ n[17:19] }}:{{ n[19:21] }}:{{ n[21:23] }} UTC</b><span class="muted">{{ n }}</span></div>
+    <form method="post" action="{{ url_for('admin.history_restore', name=n) }}" class="inline">
+      <input type="hidden" name="{{ csrf_field }}" value="{{ csrf_token }}">
+      <button class="btn small secondary">Restore</button>
+    </form>
+  </li>
+  {% else %}<li class="muted">No backups yet — they appear after your first change.</li>{% endfor %}
+</ol>
+{% endblock %}

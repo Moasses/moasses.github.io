@@ -1,0 +1,18 @@
+{% extends "admin/base.html" %}
+{% block title %}Password{% endblock %}
+{% block content %}
+<h1>Change password</h1>
+<form method="post" class="card wide" autocomplete="off">
+  <input type="hidden" name="{{ csrf_field }}" value="{{ csrf_token }}">
+  <label for="cur">Current password</label>
+  <input id="cur" name="current" type="password" autocomplete="current-password" required>
+  <label for="new">New password (at least 12 characters — a passphrase is best)</label>
+  <input id="new" name="new" type="password" autocomplete="new-password" minlength="12" required>
+  <label for="cf">Repeat new password</label>
+  <input id="cf" name="confirm" type="password" autocomplete="new-password" minlength="12" required>
+  <label for="code">Current 2FA code</label>
+  <input id="code" name="code" inputmode="numeric" maxlength="7" autocomplete="one-time-code" required>
+  <button class="btn">Change password</button>
+  <p class="muted">All sessions are signed out afterwards. To reset 2FA, run <code>python manage.py reset-2fa</code> on the server.</p>
+</form>
+{% endblock %}

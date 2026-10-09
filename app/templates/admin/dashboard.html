@@ -1,0 +1,26 @@
+{% extends "admin/base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h1>Hello {{ content.profile.first_name }} 👋</h1>
+<p class="muted">Last sign-in: {{ acct.get('last_login', '—') }} from {{ acct.get('last_login_ip', '—') }}</p>
+
+<div class="tiles">
+  {% for c in collections %}
+  <a class="tile" href="{{ url_for('admin.collection', key=c.key) }}">
+    <b>{{ c.label }}</b>
+    <span>{% if counts[c.key] is none %}edit{% else %}{{ counts[c.key] }} item{{ '' if counts[c.key] == 1 else 's' }}{% endif %}</span>
+  </a>
+  {% endfor %}
+  <a class="tile" href="{{ url_for('admin.media') }}"><b>Media &amp; CV</b><span>{{ media }} file{{ '' if media == 1 else 's' }}</span></a>
+  <a class="tile" href="{{ url_for('admin.history') }}"><b>History</b><span>{{ history }} backup{{ '' if history == 1 else 's' }}</span></a>
+</div>
+
+<h2>Backup &amp; sync</h2>
+<p>Download <code>content.json</code> to keep a backup or to commit it to GitHub (that updates the github.io version).</p>
+<p><a class="btn" href="{{ url_for('admin.export') }}">Download content.json</a></p>
+<form method="post" action="{{ url_for('admin.import_content') }}" enctype="multipart/form-data" class="row">
+  <input type="hidden" name="{{ csrf_field }}" value="{{ csrf_token }}">
+  <input type="file" name="file" accept="application/json,.json" required>
+  <button class="btn secondary">Import content.json</button>
+</form>
+{% endblock %}

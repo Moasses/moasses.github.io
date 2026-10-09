@@ -1,0 +1,14 @@
+{% extends "admin/base.html" %}
+{% block title %}Audit log{% endblock %}
+{% block content %}
+<h1>Audit log</h1>
+<p class="muted">Every sign-in attempt and change, newest first.</p>
+<table class="log">
+  <thead><tr><th>Time (UTC)</th><th>IP</th><th>Action</th><th>Detail</th></tr></thead>
+  <tbody>
+  {% for e in entries %}
+  <tr class="{{ '' if e.ok else 'bad' }}"><td>{{ e.ts }}</td><td>{{ e.ip }}</td><td>{{ e.action }}</td><td>{{ e.detail }}</td></tr>
+  {% else %}<tr><td colspan="4" class="muted">Empty.</td></tr>{% endfor %}
+  </tbody>
+</table>
+{% endblock %}

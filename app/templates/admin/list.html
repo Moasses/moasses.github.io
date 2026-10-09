@@ -1,0 +1,31 @@
+{% extends "admin/base.html" %}
+{% block title %}{{ coll.label }}{% endblock %}
+{% block content %}
+<div class="head">
+  <h1>{{ coll.label }}</h1>
+  <a class="btn" href="{{ url_for('admin.new', key=coll.key) }}">+ Add</a>
+</div>
+{% if coll.description %}<p class="muted">{{ coll.description }}</p>{% endif %}
+<p class="muted">The order here is the order on the website.</p>
+<ol class="items">
+  {% for it in items %}
+  <li>
+    <div class="txt">
+      <a href="{{ url_for('admin.edit', key=coll.key, item_id=it.id) }}"><b>{{ it[coll.title_field] }}</b></a>
+      <span class="muted">{% for f in coll.subtitle_fields %}{{ it[f] }}{% if not loop.last and it[f] %} · {% endif %}{% endfor %}</span>
+    </div>
+    <div class="acts">
+      <form method="post" action="{{ url_for('admin.move', key=coll.key, item_id=it.id) }}" class="inline">
+        <input type="hidden" name="{{ csrf_field }}" value="{{ csrf_token }}">
+        <button name="dir" value="up" class="icon" title="Move up" {% if loop.first %}disabled{% endif %}>↑</button>
+        <button name="dir" value="down" class="icon" title="Move down" {% if loop.last %}disabled{% endif %}>↓</button>
+      </form>
+      <a class="btn small" href="{{ url_for('admin.edit', key=coll.key, item_id=it.id) }}">Edit</a>
+      <a class="btn small danger" href="{{ url_for('admin.delete', key=coll.key, item_id=it.id) }}">Delete</a>
+    </div>
+  </li>
+  {% else %}
+  <li class="muted">Nothing here yet.</li>
+  {% endfor %}
+</ol>
+{% endblock %}
