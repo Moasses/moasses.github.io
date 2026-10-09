@@ -1,0 +1,22 @@
+# secrets & runtime state - never commit these
+instance/*
+!instance/.gitkeep
+.env
+*.pem
+*.key
+
+# content runtime files
+content/history/*
+!content/history/.gitkeep
+
+# build output
+build/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.coverage
+*.log
+.DS_Store
+Thumbs.db

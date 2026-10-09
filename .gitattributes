@@ -1,0 +1,10 @@
+* text=auto eol=lf
+*.bat text eol=crlf
+*.png binary
+*.jpg binary
+*.webp binary
+*.ttf binary
+*.pdf binary
+# generated files (excluded from GitHub's language statistics)
+content/portrait.json linguist-generated=true
+app/static/img/architecture/*.svg linguist-generated=true
