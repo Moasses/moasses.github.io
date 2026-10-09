@@ -25,6 +25,7 @@ import sqlite3
 import struct
 import tempfile
 import time
+from contextlib import closing
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -181,7 +182,7 @@ class RateLimiter:
 
     def __init__(self, db_path: Path):
         self.db_path = str(db_path)
-        with self._conn() as c:
+        with closing(self._conn()) as c:
             c.execute("CREATE TABLE IF NOT EXISTS hits (k TEXT NOT NULL, ts REAL NOT NULL)")
             c.execute("CREATE INDEX IF NOT EXISTS hits_k ON hits (k, ts)")
 
@@ -191,13 +192,13 @@ class RateLimiter:
         return c
 
     def count(self, key: str, window: int) -> int:
-        with self._conn() as c:
+        with closing(self._conn()) as c:
             return c.execute("SELECT COUNT(*) FROM hits WHERE k=? AND ts>?",
                              (key, time.time() - window)).fetchone()[0]
 
     def hit(self, key: str) -> None:
         now = time.time()
-        with self._conn() as c:
+        with closing(self._conn()) as c:
             c.execute("INSERT INTO hits (k, ts) VALUES (?, ?)", (key, now))
             c.execute("DELETE FROM hits WHERE ts < ?", (now - 86400,))
 
@@ -205,7 +206,7 @@ class RateLimiter:
         return self.count(key, window) >= limit
 
     def clear(self, key: str) -> None:
-        with self._conn() as c:
+        with closing(self._conn()) as c:
             c.execute("DELETE FROM hits WHERE k=?", (key,))
 
 
