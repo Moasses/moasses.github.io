@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Tests (Python ${{ matrix.python }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: requirements*.txt
+      - run: pip install -r requirements-dev.txt
+      - name: Unit + security tests
+        run: python -m unittest discover -s tests -t . -v
+      - name: Validate content
+        run: python manage.py check
+
+  security:
+    name: Security scans
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install -r requirements-dev.txt
+      - name: Bandit (static analysis of the Python code)
+        run: bandit -r app -ll
+      - name: pip-audit (known vulnerabilities in dependencies)
+        run: pip-audit -r requirements.txt
+
+  docker:
+    name: Docker image builds
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: docker build -t portfolio-web:ci .
+      - name: Container starts and is healthy
+        run: |
+          docker run -d --name web --read-only --tmpfs /tmp --cap-drop ALL \
+            -e SECRET_KEY="$(python3 -c 'import secrets;print(secrets.token_urlsafe(48))')" \
+            -e SITE_URL=https://example.eu -e ADMIN_PATH=/ci-admin-path -e TRUST_PROXY=0 \
+            -p 8000:8000 portfolio-web:ci
+          for i in $(seq 1 20); do curl -fsS http://127.0.0.1:8000/healthz && break; sleep 1; done
+          curl -fsSI http://127.0.0.1:8000/ | grep -i "content-security-policy"
+          docker logs web

@@ -1,0 +1,71 @@
+# Version 1: builds the static site with Flask and publishes it on GitHub Pages.
+# Runs on every push to main (e.g. after you commit an updated content/content.json).
+#
+# One-time setup: repository Settings → Pages → Source: "GitHub Actions".
+# Optional repository variables (Settings → Secrets and variables → Actions → Variables):
+#   CUSTOM_DOMAIN   e.g. moasses.eu  (if you point a domain at GitHub Pages)
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Run tests
+        run: python -m unittest discover -s tests -t .
+      - name: Self-host the font (no Google Fonts requests)
+        run: python tools/fetch_fonts.py || echo "font download skipped - falling back to system monospace"
+      - name: Work out the site address
+        id: site
+        env:
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
+          CUSTOM_DOMAIN: ${{ vars.CUSTOM_DOMAIN }}
+        run: |
+          owner_lc="$(echo "$OWNER" | tr '[:upper:]' '[:lower:]')"
+          if [ -n "$CUSTOM_DOMAIN" ]; then
+            echo "base=" >> "$GITHUB_OUTPUT"; echo "url=https://$CUSTOM_DOMAIN" >> "$GITHUB_OUTPUT"
+          elif [ "$(echo "$REPO" | tr '[:upper:]' '[:lower:]')" = "$owner_lc.github.io" ]; then
+            echo "base=" >> "$GITHUB_OUTPUT"; echo "url=https://$owner_lc.github.io" >> "$GITHUB_OUTPUT"
+          else
+            echo "base=/$REPO" >> "$GITHUB_OUTPUT"; echo "url=https://$owner_lc.github.io/$REPO" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Build static site with Flask
+        env:
+          SITE_URL: ${{ steps.site.outputs.url }}
+          CUSTOM_DOMAIN: ${{ vars.CUSTOM_DOMAIN }}
+        run: python manage.py build --out build --base-path "${{ steps.site.outputs.base }}"
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
