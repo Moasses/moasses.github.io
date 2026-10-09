@@ -3,10 +3,20 @@ from tests.helpers import AppTestCase
 
 class PublicPages(AppTestCase):
     def test_pages_render(self):
-        for path in ("/", "/publications/", "/projects/aws-multi-tier/", "/imprint/", "/privacy/",
-                     "/robots.txt", "/sitemap.xml", "/.well-known/security.txt", "/healthz"):
-            with self.subTest(path=path):
-                self.assertEqual(self.client.get(path).status_code, 200)
+           for path in ("/", "/publications/", "/projects/aws-multi-tier/",
+                        "/robots.txt", "/sitemap.xml", "/.well-known/security.txt", "/healthz"):
+               with self.subTest(path=path):
+                   self.assertEqual(self.client.get(path).status_code, 200)
+
+    def test_legal_pages_follow_setting(self):
+           store = self.app.extensions["content"]
+           for shown, expected in ((True, 200), (False, 404)):
+               doc = store.get_copy()
+               doc["legal"]["show_imprint"] = shown
+               store.save(doc)
+               for path in ("/imprint/", "/privacy/"):
+                   with self.subTest(shown=shown, path=path):
+                       self.assertEqual(self.client.get(path).status_code, expected)
 
     def test_cv_content_present(self):
         html = self.client.get("/").get_data(as_text=True)
