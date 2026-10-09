@@ -12,7 +12,15 @@
       if (e.key === "Escape") menu.removeAttribute("open");
     });
   }
-
+    /* email links: the address is only assembled when someone clicks,
+     so it never appears as a complete address in the page source */
+  Array.prototype.forEach.call(document.querySelectorAll("a.mail[data-u][data-d]"), function (a) {
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      window.location.href = "mailto:" + a.getAttribute("data-u") + "@" + a.getAttribute("data-d");
+    });
+  });
+  
   /* publication type filters */
   var bar = document.querySelector(".filters");
   if (bar) {

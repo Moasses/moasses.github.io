@@ -1,4 +1,8 @@
 {% set pr = content.profile %}
+{% macro email_link(addr) -%}
+{%- set parts = addr.split('@', 1) -%}
+<a class="mail" href="#" data-u="{{ parts[0] }}" data-d="{{ parts[1] }}">{{ parts[0] }}[at]{{ parts[1] }}</a>
+{%- endmacro %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -37,7 +41,7 @@
         <li><a href="{{ url_for('public.publications') }}">Publications</a></li>
       </ul>
       <div class="contact">
-        {% if pr.email %}<a href="mailto:{{ pr.email }}">{{ pr.email }}</a>{% endif %}
+        {% if pr.email %}{{ email_link(pr.email) }}{% endif %}
         {% if pr.phone and pr.show_phone %}<a href="tel:{{ pr.phone | replace(' ', '') }}">{{ pr.phone }}</a>{% endif %}
         {% if pr.linkedin %}<a href="{{ pr.linkedin }}" rel="noopener noreferrer me" target="_blank">LinkedIn</a>{% endif %}
         {% if pr.github %}<a href="{{ pr.github }}" rel="noopener noreferrer me" target="_blank">GitHub</a>{% endif %}
@@ -62,7 +66,7 @@
       <footer class="footer">
         <span>{{ pr.footer | replace('{year}', year|string) }}</span>
         <nav aria-label="Footer">
-          {% if pr.email %}<a href="mailto:{{ pr.email }}">{{ pr.email }}</a>{% endif %}
+          {% if pr.email %}{{ email_link(pr.email) }}{% endif %}
           {% if content.legal.show_imprint %}
           <a href="{{ url_for('public.imprint') }}">Imprint</a>
           <a href="{{ url_for('public.privacy') }}">Privacy</a>
