@@ -1,0 +1,48 @@
+# Caddy: automatic HTTPS (Let's Encrypt), HTTP/2 + HTTP/3, compression.
+{
+	email {$ACME_EMAIL}
+	servers {
+		protocols h1 h2 h3
+	}
+}
+
+# Uncomment if you also point www.<domain> to the server:
+# www.{$DOMAIN} {
+# 	redir https://{$DOMAIN}{uri} permanent
+# }
+
+{$DOMAIN} {
+	encode zstd gzip
+	request_body {
+		max_size 12MB
+	}
+
+	header {
+		-Server
+		-X-Powered-By
+		Strict-Transport-Security "max-age=63072000; includeSubDomains"
+	}
+
+	# answer typical vulnerability-scanner probes without touching the app
+	@probes path /wp-* /wordpress* /.env* /.git* /phpmyadmin* /xmlrpc.php /cgi-bin/* /*.php
+	respond @probes 404
+
+	# Optional extra wall: allow the admin panel only from your own IPs.
+	# @admin_blocked {
+	# 	path /manage-change-me-7f3k*
+	# 	not remote_ip 203.0.113.7
+	# }
+	# respond @admin_blocked 404
+
+	reverse_proxy web:8000 {
+		health_uri /healthz
+	}
+
+	log {
+		output file /data/access.log {
+			roll_size 10MiB
+			roll_keep_for 336h
+		}
+		format json
+	}
+}

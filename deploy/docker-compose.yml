@@ -1,0 +1,60 @@
+# Production stack:  Internet → Caddy (HTTPS, HTTP/3) → gunicorn/Flask
+# Start:  cd deploy && docker compose up -d --build
+name: portfolio
+
+services:
+  web:
+    build:
+      context: ..
+    image: portfolio-web:latest
+    env_file: .env
+    restart: unless-stopped
+    read_only: true                     # container filesystem is read-only …
+    tmpfs:
+      - /tmp:size=64m,noexec,nosuid
+    volumes:
+      - site-data:/data                 # … except content + admin data
+    cap_drop: [ALL]                     # no Linux capabilities at all
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 512m
+    pids_limit: 200
+    networks: [backend]                 # no direct internet access (blocks data exfiltration)
+    logging:
+      driver: json-file
+      options: { max-size: "10m", max-file: "3" }
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on: [web]
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"                   # HTTP/3
+    environment:
+      DOMAIN: ${DOMAIN}
+      ACME_EMAIL: ${ACME_EMAIL}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop: [ALL]
+    cap_add: [NET_BIND_SERVICE]
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 256m
+    networks: [backend, frontend]
+
+networks:
+  backend:
+    internal: true
+  frontend: {}
+
+volumes:
+  site-data:
+  caddy-data:
+  caddy-config:

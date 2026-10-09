@@ -1,0 +1,12 @@
+.git
+.github
+.venv
+venv
+build
+instance
+content/history/*
+tests
+tools/photo-cutout.png
+**/__pycache__
+.env
+*.md
