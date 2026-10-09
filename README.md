@@ -1,6 +1,6 @@
 # Armin Moasses — personal website
 
-# I share the details in case you are interested to see the engineeing work behind...
+# I share the details in case you are interested in seeing the engineering work behind...
 
 
 [![CI](../../actions/workflows/ci.yml/badge.svg)](../../actions/workflows/ci.yml)
