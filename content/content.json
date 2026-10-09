@@ -1,0 +1,653 @@
+{
+  "version": 1,
+  "profile": {
+    "first_name": "Armin",
+    "last_name": "Moasses",
+    "roles": [
+      "A DevOps Engineer,",
+      "Researcher,",
+      "and Developer"
+    ],
+    "tagline": "DevOps Engineer · Berlin, Germany",
+    "location": "Berlin, Germany · Open to relocation",
+    "intro": "I am a DevOps engineer with an M.Sc. in Software Engineering and 2.5 years of research developing distributed prototypes at TU Berlin. I work with Linux, Docker, Kubernetes, Jenkins CI/CD, Terraform, Ansible and AWS, backed by a programming background in Java and Python. I care about reproducible benchmarks, clear technical documentation and infrastructure that teams can trust.",
+    "email": "armin.moasses@gmail.com",
+    "phone": "",
+    "show_phone": false,
+    "linkedin": "https://www.linkedin.com/in/armin-moasses",
+    "github": "https://github.com/moasses",
+    "scholar": "https://scholar.google.com/citations?user=bwlKSNcAAAAJ&hl=en",
+    "cv_file": "",
+    "site_title": "Armin Moasses | DevOps Engineer | Researcher | Developer",
+    "meta_description": "Armin Moasses is a Berlin-based DevOps engineer working with Kubernetes, Docker, Jenkins CI/CD, Terraform, Ansible and AWS, with a research background in Function-as-a-Service at TU Berlin.",
+    "footer": "Copyright © {year} Armin Moasses."
+  },
+  "sections": [
+    {
+      "title": "As a DevOps Engineer",
+      "slug": "devops",
+      "text": "I automate how software is built, tested, provisioned and deployed. In my AWS Cloud & DevOps Engineering training I worked hands-on across Linux administration, networking, AWS and CI/CD, with project work in pipelines and infrastructure automation. The tools I work with:",
+      "headline": [
+        "Docker",
+        "Kubernetes",
+        "Jenkins",
+        "Terraform",
+        "Ansible",
+        "AWS"
+      ],
+      "stats": [
+        {
+          "value": "9",
+          "label": "stage Jenkins pipeline",
+          "note": "Git → infrastructure → image → deploy"
+        },
+        {
+          "value": "8",
+          "label": "AWS services",
+          "note": "in one multi-tier environment"
+        }
+      ],
+      "categories": [
+        "devops"
+      ],
+      "show_layers": true,
+      "layers_footer": "Infrastructure as code & a pipeline-driven delivery flow",
+      "show_skills": false,
+      "show_projects": false,
+      "show_education": false,
+      "button_label": "",
+      "button_url": "",
+      "id": "5e67baa4"
+    },
+    {
+      "title": "As a Researcher",
+      "slug": "researcher",
+      "text": "At Technische Universität Berlin I worked on OptiFaaS, a DFG-funded research project on Function-as-a-Service and event-driven cloud architectures, building distributed prototypes and repeatable benchmarks with an international research team.",
+      "headline": [
+        "OptiFaaS",
+        "Serverless",
+        "Event-driven",
+        "Benchmarking"
+      ],
+      "stats": [
+        {
+          "value": "2.5",
+          "label": "years of research",
+          "note": "at TU Berlin"
+        },
+        {
+          "value": "1",
+          "label": "IEEE publication",
+          "note": "Industry 4.0, AI & Communications 2021"
+        },
+        {
+          "value": "2",
+          "label": "theses",
+          "note": "IoT energy efficiency · home monitoring"
+        }
+      ],
+      "categories": [
+        "research"
+      ],
+      "show_layers": false,
+      "layers_footer": "",
+      "show_skills": false,
+      "show_projects": false,
+      "show_education": false,
+      "button_label": "Publications",
+      "button_url": "/publications/",
+      "id": "5e749b7c"
+    },
+    {
+      "title": "As a Developer",
+      "slug": "developer",
+      "text": "Before moving into DevOps I built backend services: Java and Spring Boot APIs for Android applications, in an Agile team following Scrum — and I taught programming, networking and cloud computing at university.",
+      "headline": [
+        "Java",
+        "Spring Boot",
+        "REST APIs",
+        "Python",
+        "PostgreSQL"
+      ],
+      "stats": [
+        {
+          "value": "3+",
+          "label": "years of backend development",
+          "note": "Java · Spring Boot · Maven"
+        },
+        {
+          "value": "2",
+          "label": "university teaching roles",
+          "note": "lecturer & teaching assistant"
+        }
+      ],
+      "categories": [
+        "development",
+        "teaching"
+      ],
+      "show_layers": false,
+      "layers_footer": "",
+      "show_skills": true,
+      "show_projects": false,
+      "show_education": false,
+      "button_label": "",
+      "button_url": "",
+      "id": "e1adfa0b"
+    },
+    {
+      "title": "Projects",
+      "slug": "projects",
+      "text": "Selected projects with their architecture and results. Open a project to see the full design.",
+      "headline": [],
+      "stats": [],
+      "categories": [],
+      "show_layers": false,
+      "layers_footer": "",
+      "show_skills": false,
+      "show_projects": true,
+      "show_education": false,
+      "button_label": "",
+      "button_url": "",
+      "id": "c88a1983"
+    },
+    {
+      "title": "Education",
+      "slug": "education",
+      "text": "",
+      "headline": [],
+      "stats": [],
+      "categories": [],
+      "show_layers": false,
+      "layers_footer": "",
+      "show_skills": false,
+      "show_projects": false,
+      "show_education": true,
+      "button_label": "",
+      "button_url": "",
+      "id": "927bf7b2"
+    }
+  ],
+  "experience": [
+    {
+      "title": "AWS Cloud & DevOps Engineering (Practical Training)",
+      "org": "TechPro Education Europe GmbH",
+      "location": "Hannover, Germany",
+      "start": "Nov 2025",
+      "end": "Jul 2026",
+      "category": "devops",
+      "bullets": [
+        "Completed practical training in Linux administration, networking, AWS and DevOps, with project work in CI/CD and infrastructure automation.",
+        "Built Docker images and deployed containerised applications to Kubernetes in training projects.",
+        "Built a nine-stage Jenkins pipeline for a rental-car application, connecting Git, infrastructure provisioning, Docker image builds and deployment.",
+        "Automated server configuration and application deployment with Ansible.",
+        "Provisioned AWS infrastructure with Terraform, using reusable modules and variables.",
+        "Deployed a multi-tier AWS training environment using VPC, EC2, IAM, ALB, Auto Scaling, RDS, S3 and Route 53."
+      ],
+      "id": "d40ea51e"
+    },
+    {
+      "title": "Research Associate",
+      "org": "Technische Universität Berlin",
+      "location": "Berlin, Germany",
+      "start": "Apr 2023",
+      "end": "Sep 2025",
+      "category": "research",
+      "bullets": [
+        "Worked on OptiFaaS, a DFG-funded project on Function-as-a-Service and event-driven cloud architectures.",
+        "Developed distributed software prototypes using Java, Docker, Linux, AWS Lambda and Google Cloud Functions.",
+        "Built repeatable benchmarks to evaluate scalability, concurrency and performance across distributed workloads.",
+        "Documented implementations and benchmark results for collaboration within an international research team."
+      ],
+      "id": "60787a08"
+    },
+    {
+      "title": "Adjunct Lecturer",
+      "org": "Technical & Vocational University of Sanandaj",
+      "location": "Iran",
+      "start": "Sep 2021",
+      "end": "Aug 2022",
+      "category": "teaching",
+      "bullets": [
+        "Taught courses in mobile application development."
+      ],
+      "id": "c21323fe"
+    },
+    {
+      "title": "Junior Developer",
+      "org": "TDA Team",
+      "location": "Iran",
+      "start": "Aug 2017",
+      "end": "Dec 2020",
+      "category": "development",
+      "bullets": [
+        "Developed Java/Spring Boot backend services for Android applications, using Maven and REST APIs.",
+        "Contributed to testing, debugging, deployment and maintenance of backend services.",
+        "Worked in an Agile development team following Scrum practices."
+      ],
+      "id": "65513155"
+    },
+    {
+      "title": "Teaching Assistant",
+      "org": "Azad University",
+      "location": "Iran",
+      "start": "Sep 2017",
+      "end": "Jul 2020",
+      "category": "teaching",
+      "bullets": [
+        "Led laboratory sessions for networking, programming and cloud computing courses."
+      ],
+      "id": "2e1f822c"
+    },
+    {
+      "title": "Network Technician Intern",
+      "org": "Ahoura Tech Co.",
+      "location": "Iran",
+      "start": "Nov 2015",
+      "end": "Mar 2016",
+      "category": "early",
+      "bullets": [
+        "Supported the installation, maintenance and troubleshooting of LAN and wireless networks, system setup and network stability."
+      ],
+      "id": "de2930f3"
+    },
+    {
+      "title": "Computer Technician Intern",
+      "org": "FaraSystem Tech Co.",
+      "location": "Iran",
+      "start": "Apr 2015",
+      "end": "Jul 2015",
+      "category": "early",
+      "bullets": [
+        "Supported hardware setup, software installation, office-system maintenance and technical troubleshooting."
+      ],
+      "id": "aeb80e0a"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Nine-stage Jenkins CI/CD pipeline",
+      "slug": "jenkins-rental-car-pipeline",
+      "year": "2026",
+      "context": "AWS Cloud & DevOps training",
+      "image": "static:img/architecture/jenkins-pipeline.svg",
+      "summary": "An end-to-end Jenkins pipeline for a rental-car application that connects Git, infrastructure provisioning, Docker image builds and deployment.",
+      "details": "The pipeline turns every push into a reproducible delivery: the code is checked out, infrastructure is provisioned with Terraform, servers are configured with Ansible, the application is built into Docker images and pushed to a registry, and the new version is deployed.\n\nEach stage is a separate, observable step, so a failure is easy to locate and the whole flow can be re-run from a clean state.",
+      "results": [
+        "9 automated stages from commit to deployment",
+        "Infrastructure and app delivered by one pipeline",
+        "Repeatable runs from a clean state"
+      ],
+      "tags": [
+        "Jenkins",
+        "Git",
+        "Terraform",
+        "Ansible",
+        "Docker"
+      ],
+      "link": "",
+      "id": "951d84c1"
+    },
+    {
+      "title": "Multi-tier AWS environment with Terraform",
+      "slug": "aws-multi-tier",
+      "year": "2026",
+      "context": "AWS Cloud & DevOps training",
+      "image": "static:img/architecture/aws-multi-tier.svg",
+      "summary": "A highly available multi-tier web environment on AWS, provisioned with reusable Terraform modules and variables.",
+      "details": "Traffic enters through Route 53 and an Application Load Balancer that spreads requests across EC2 instances in an Auto Scaling group inside a dedicated VPC. Application data is stored in Amazon RDS and static assets in S3, with access controlled by IAM roles.\n\nThe whole environment is described as Terraform code with reusable modules and variables, so it can be created, changed and destroyed reproducibly.",
+      "results": [
+        "8 AWS services in one environment",
+        "Scales out automatically with load",
+        "Fully reproducible with Terraform modules"
+      ],
+      "tags": [
+        "AWS",
+        "Terraform",
+        "VPC",
+        "EC2",
+        "ALB",
+        "Auto Scaling",
+        "RDS",
+        "S3",
+        "Route 53"
+      ],
+      "link": "",
+      "id": "9608a309"
+    },
+    {
+      "title": "OptiFaaS — serverless benchmarking",
+      "slug": "optifaas-benchmarks",
+      "year": "2023–2025",
+      "context": "Research at TU Berlin (DFG-funded)",
+      "image": "static:img/architecture/optifaas.svg",
+      "summary": "Distributed prototypes and repeatable benchmarks for Function-as-a-Service and event-driven cloud architectures.",
+      "details": "Within the OptiFaaS research project I developed distributed software prototypes in Java and deployed them on AWS Lambda and Google Cloud Functions, packaged with Docker on Linux.\n\nI built repeatable benchmarks to evaluate scalability, concurrency and performance across distributed workloads, and documented implementations and results for an international research team.",
+      "results": [
+        "Repeatable benchmark setup across two cloud providers",
+        "Scalability & concurrency evaluated on real workloads",
+        "Results documented for an international team"
+      ],
+      "tags": [
+        "Java",
+        "AWS Lambda",
+        "Google Cloud Functions",
+        "Docker",
+        "Linux"
+      ],
+      "link": "",
+      "id": "2ca9d637"
+    },
+    {
+      "title": "HetEng — energy-efficient IoT clustering",
+      "slug": "heteng-iot-clustering",
+      "year": "2021",
+      "context": "M.Sc. thesis · IEEE publication",
+      "image": "static:img/architecture/heteng.svg",
+      "summary": "An improved distributed, energy-efficient clustering scheme for heterogeneous IoT networks.",
+      "details": "My master's thesis studied how heterogeneous clustering can reduce power consumption in IoT networks. Nodes are organised into clusters whose heads aggregate data and forward it to the base station, so fewer nodes spend energy on long-distance transmission.\n\nThe work was published at the 2021 IEEE International Conference on Industry 4.0, Artificial Intelligence and Communications Technology.",
+      "results": [
+        "Published at an IEEE conference (2021)",
+        "Lower energy use through heterogeneous clustering"
+      ],
+      "tags": [
+        "IoT",
+        "Wireless networks",
+        "Energy efficiency",
+        "Simulation"
+      ],
+      "link": "https://scholar.google.com/citations?user=bwlKSNcAAAAJ&hl=en",
+      "id": "7e4aa96c"
+    },
+    {
+      "title": "Remote home monitoring system",
+      "slug": "remote-home-monitoring",
+      "year": "2016",
+      "context": "B.Sc. thesis",
+      "image": "static:img/architecture/home-monitoring.svg",
+      "summary": "Design and implementation of a system for monitoring a home remotely.",
+      "details": "My bachelor's thesis covered the design and implementation of a remote home monitoring system: sensors in the home report their state to a central service, which users can check remotely.",
+      "results": [
+        "Designed and implemented end to end"
+      ],
+      "tags": [
+        "IoT",
+        "Sensors",
+        "Networking"
+      ],
+      "link": "",
+      "id": "6f2ff193"
+    }
+  ],
+  "layers": [
+    {
+      "pre": "On the",
+      "title": "Code",
+      "post": "Layer",
+      "icon": "code",
+      "groups": [
+        {
+          "head": "I work with",
+          "items": [
+            "Git & GitHub",
+            "Java · Python · Bash"
+          ]
+        },
+        {
+          "head": "I build",
+          "items": [
+            "Docker images",
+            "REST services"
+          ]
+        }
+      ],
+      "id": "87dcba46"
+    },
+    {
+      "pre": "On the",
+      "title": "Pipeline",
+      "post": "Layer",
+      "icon": "pipeline",
+      "groups": [
+        {
+          "head": "I develop",
+          "items": [
+            "Jenkins CI/CD pipelines",
+            "Automated builds & deploys"
+          ]
+        },
+        {
+          "head": "I automate",
+          "items": [
+            "Configuration with Ansible",
+            "Provisioning with Terraform"
+          ]
+        }
+      ],
+      "id": "bbd47cce"
+    },
+    {
+      "pre": "On the",
+      "title": "Cloud",
+      "post": "Layer",
+      "icon": "cloud",
+      "groups": [
+        {
+          "head": "I deploy to",
+          "items": [
+            "Kubernetes",
+            "AWS EC2 · ALB · Auto Scaling"
+          ]
+        },
+        {
+          "head": "I configure",
+          "items": [
+            "VPC · IAM · Route 53",
+            "RDS · S3 · Lambda"
+          ]
+        }
+      ],
+      "id": "3d7e8a9b"
+    }
+  ],
+  "skills": [
+    {
+      "group": "Systems & Scripting",
+      "items": [
+        "Linux",
+        "Python",
+        "Bash (basic)",
+        "Networking"
+      ],
+      "id": "e8435f7c"
+    },
+    {
+      "group": "Containers & CI/CD",
+      "items": [
+        "Docker",
+        "Kubernetes",
+        "Jenkins",
+        "Git",
+        "GitHub"
+      ],
+      "id": "5714db48"
+    },
+    {
+      "group": "Infrastructure Automation",
+      "items": [
+        "Terraform",
+        "Ansible"
+      ],
+      "id": "5e4bf7c0"
+    },
+    {
+      "group": "Cloud Platforms",
+      "items": [
+        "AWS: EC2, IAM, VPC, S3, RDS, Route 53, ALB, Auto Scaling, Lambda",
+        "Google Cloud Functions"
+      ],
+      "id": "a02cea5e"
+    },
+    {
+      "group": "Software Development",
+      "items": [
+        "Java",
+        "Spring Boot",
+        "REST APIs",
+        "Maven",
+        "Agile / Scrum"
+      ],
+      "id": "80b587a0"
+    },
+    {
+      "group": "Data & Testing",
+      "items": [
+        "PostgreSQL",
+        "SQLite",
+        "MariaDB",
+        "JUnit",
+        "Performance testing",
+        "Benchmarking"
+      ],
+      "id": "06463ab7"
+    },
+    {
+      "group": "AI Tools",
+      "items": [
+        "AI-assisted code review, testing & documentation",
+        "Agent workflows"
+      ],
+      "id": "f1f58879"
+    }
+  ],
+  "education": [
+    {
+      "degree": "AWS Cloud & DevOps Engineering — Practical Training",
+      "school": "TechPro Education Europe GmbH",
+      "location": "Hannover, Germany",
+      "start": "Nov 2025",
+      "end": "Jul 2026",
+      "notes": [],
+      "id": "45317078"
+    },
+    {
+      "degree": "M.Sc. in Software Engineering",
+      "school": "Azad University",
+      "location": "Iran",
+      "start": "Sep 2016",
+      "end": "Feb 2020",
+      "notes": [
+        "ZAB recognition: equivalent to a German Master's degree. Final grade: 1.5.",
+        "Thesis: Using Heterogeneous Clustering to Improve Power Consumption in IoT Networks."
+      ],
+      "id": "d5f0ddf9"
+    },
+    {
+      "degree": "B.Sc. in Software Engineering",
+      "school": "Azad University",
+      "location": "Iran",
+      "start": "Jan 2014",
+      "end": "Apr 2016",
+      "notes": [
+        "ZAB recognition: equivalent to a German Bachelor's degree.",
+        "Thesis: Design and Implementation of a Remote Home Monitoring System."
+      ],
+      "id": "cbaec152"
+    }
+  ],
+  "certifications": [
+    {
+      "title": "AWS Cloud & DevOps Engineering",
+      "issuer": "TechPro Education Europe GmbH",
+      "date": "2026",
+      "url": "",
+      "id": "890d5c28"
+    },
+    {
+      "title": "German B1: Conversation and Grammar",
+      "issuer": "VHS",
+      "date": "June 2026",
+      "url": "",
+      "id": "f61ccfbf"
+    },
+    {
+      "title": "DTZ and Integration Course: German B1",
+      "issuer": "",
+      "date": "January 2026",
+      "url": "",
+      "id": "89abd0c8"
+    },
+    {
+      "title": "Applied Machine Learning",
+      "issuer": "",
+      "date": "November 2017",
+      "url": "",
+      "id": "0136237f"
+    },
+    {
+      "title": "Java Backend with Spring Boot",
+      "issuer": "",
+      "date": "October 2017",
+      "url": "",
+      "id": "c3d02c5c"
+    }
+  ],
+  "languages": [
+    {
+      "name": "German",
+      "level": "B1 (B2 course ongoing)",
+      "id": "ae0a8162"
+    },
+    {
+      "name": "English",
+      "level": "C1",
+      "id": "338f34ff"
+    },
+    {
+      "name": "Farsi",
+      "level": "Native",
+      "id": "821a8a35"
+    },
+    {
+      "name": "Kurdish",
+      "level": "Mother Tongue",
+      "id": "9ba8a10a"
+    }
+  ],
+  "publications": [
+    {
+      "title": "HetEng: An Improved Distributed Energy Efficient Clustering Scheme for Heterogeneous IoT Networks",
+      "year": 2021,
+      "type": "conference",
+      "authors": "A. Moasses et al.",
+      "venue": "2021 IEEE International Conference on Industry 4.0, Artificial Intelligence and Communications Technology (IAICT)",
+      "url": "https://scholar.google.com/citations?user=bwlKSNcAAAAJ&hl=en",
+      "award": "",
+      "id": "b050c359"
+    },
+    {
+      "title": "Using Heterogeneous Clustering to Improve Power Consumption in IoT Networks",
+      "year": 2020,
+      "type": "thesis",
+      "authors": "A. Moasses",
+      "venue": "M.Sc. thesis, Azad University",
+      "url": "",
+      "award": "",
+      "id": "e3bf8f1a"
+    },
+    {
+      "title": "Design and Implementation of a Remote Home Monitoring System",
+      "year": 2016,
+      "type": "thesis",
+      "authors": "A. Moasses",
+      "venue": "B.Sc. thesis, Azad University",
+      "url": "",
+      "award": "",
+      "id": "e9cad43a"
+    }
+  ],
+  "legal": {
+    "show_imprint": false,
+    "imprint": "Armin Moasses\n[Street and house number]\n[Postcode] Berlin\nGermany\n\nEmail: armin.moasses@gmail.com",
+    "privacy": "This website does not use cookies, analytics or tracking, and it does not load any fonts, scripts or images from third parties.\n\nWhen you visit the site, the web server temporarily processes technical data that your browser sends automatically (IP address, date and time, requested page, browser type). This is necessary to deliver the website securely (Art. 6(1)(f) GDPR). Server logs are deleted after 14 days.\n\nIf you contact me by email, I use your message only to reply to you.\n\nYou have the right to access, rectify and erase your data, and to lodge a complaint with a data protection supervisory authority. Contact: armin.moasses@gmail.com"
+  }
+}
