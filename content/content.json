@@ -38,13 +38,13 @@
       "stats": [
         {
           "value": "9",
-          "label": "stage Jenkins pipeline",
-          "note": "Git → infrastructure → image → deploy"
+          "label": "stage CI/CD pipeline",
+          "note": "Jenkins · Terraform · Ansible · Docker"
         },
         {
-          "value": "8",
-          "label": "AWS services",
-          "note": "in one multi-tier environment"
+          "value": "44",
+          "label": "automated tests on every push",
+          "note": "this website · GitHub Actions"
         }
       ],
       "categories": [
@@ -101,7 +101,7 @@
     {
       "title": "As a Developer",
       "slug": "developer",
-      "text": "Before moving into DevOps I built backend services: Java and Spring Boot APIs for Android applications, in an Agile team following Scrum — and I taught programming, networking and cloud computing at university.",
+      "text": "Before DevOps I spent 3 years building Java and Spring Boot backend services for Android apps in a Scrum team, and I taught programming, networking and cloud computing labs at university.",
       "headline": [
         "Java",
         "Spring Boot",
@@ -114,16 +114,10 @@
           "value": "3+",
           "label": "years of backend development",
           "note": "Java · Spring Boot · Maven"
-        },
-        {
-          "value": "2",
-          "label": "university teaching roles",
-          "note": "lecturer & teaching assistant"
         }
       ],
       "categories": [
-        "development",
-        "teaching"
+        "development"
       ],
       "show_layers": false,
       "layers_footer": "",
@@ -266,27 +260,28 @@
   ],
   "projects": [
     {
-      "title": "Nine-stage Jenkins CI/CD pipeline",
-      "slug": "jenkins-rental-car-pipeline",
+      "title": "This website — secure Flask portfolio with CI/CD",
+      "slug": "this-website",
       "year": "2026",
-      "context": "AWS Cloud & DevOps training",
-      "image": "static:img/architecture/jenkins-pipeline.svg",
-      "summary": "An end-to-end Jenkins pipeline for a rental-car application that connects Git, infrastructure provisioning, Docker image builds and deployment.",
-      "details": "The pipeline turns every push into a reproducible delivery: the code is checked out, infrastructure is provisioned with Terraform, servers are configured with Ansible, the application is built into Docker images and pushed to a registry, and the new version is deployed.\n\nEach stage is a separate, observable step, so a failure is easy to locate and the whole flow can be re-run from a clean state.",
+      "context": "Personal project · open source",
+      "image": "static:img/architecture/website.svg",
+      "summary": "The site you are reading: a Python/Flask app with a two-factor-protected content editor, automated security testing and two deployment targets.",
+      "details": "Content is edited in a private admin panel (password + two-factor login, CSRF protection, rate limiting, audit log) and stored as validated JSON.\n\nEvery push runs GitHub Actions: 44 unit and security tests, Bandit and pip-audit, CodeQL scanning and a Docker build. The same Flask code is then frozen into a static site and deployed to GitHub Pages with a strict Content-Security-Policy. For a custom domain it ships as a hardened container: non-root, read-only filesystem, gunicorn behind Caddy with automatic HTTPS.",
       "results": [
-        "9 automated stages from commit to deployment",
-        "Infrastructure and app delivered by one pipeline",
-        "Repeatable runs from a clean state"
+        "44 automated tests on every push",
+        "Deployed automatically by GitHub Actions",
+        "No cookies, no trackers, strict CSP"
       ],
       "tags": [
-        "Jenkins",
-        "Git",
-        "Terraform",
-        "Ansible",
-        "Docker"
+        "Python",
+        "Flask",
+        "GitHub Actions",
+        "Docker",
+        "Caddy",
+        "CodeQL"
       ],
-      "link": "",
-      "id": "951d84c1"
+      "link": "https://github.com/Moasses/moasses.github.io",
+      "id": "81c0400b"
     },
     {
       "title": "Multi-tier AWS environment with Terraform",
@@ -316,6 +311,29 @@
       "id": "9608a309"
     },
     {
+      "title": "Nine-stage Jenkins CI/CD pipeline",
+      "slug": "jenkins-rental-car-pipeline",
+      "year": "2026",
+      "context": "AWS Cloud & DevOps training",
+      "image": "static:img/architecture/jenkins-pipeline.svg",
+      "summary": "An end-to-end Jenkins pipeline for a rental-car application that connects Git, infrastructure provisioning, Docker image builds and deployment.",
+      "details": "The pipeline turns every push into a reproducible delivery: the code is checked out, infrastructure is provisioned with Terraform, servers are configured with Ansible, the application is built into Docker images and pushed to a registry, and the new version is deployed.\n\nEach stage is a separate, observable step, so a failure is easy to locate and the whole flow can be re-run from a clean state.",
+      "results": [
+        "9 automated stages from commit to deployment",
+        "Infrastructure and app delivered by one pipeline",
+        "Repeatable runs from a clean state"
+      ],
+      "tags": [
+        "Jenkins",
+        "Git",
+        "Terraform",
+        "Ansible",
+        "Docker"
+      ],
+      "link": "",
+      "id": "951d84c1"
+    },
+    {
       "title": "OptiFaaS — benchmarking serverless platforms",
       "slug": "optifaas-benchmarks",
       "year": "2023–2025",
@@ -337,70 +355,6 @@
       ],
       "link": "",
       "id": "2ca9d637"
-    },
-    {
-      "title": "HetEng — energy-efficient IoT clustering",
-      "slug": "heteng-iot-clustering",
-      "year": "2021",
-      "context": "M.Sc. thesis · IEEE publication",
-      "image": "static:img/architecture/heteng.svg",
-      "summary": "An improved distributed, energy-efficient clustering scheme for heterogeneous IoT networks.",
-      "details": "My master's thesis studied how heterogeneous clustering can reduce power consumption in IoT networks. Nodes are organised into clusters whose heads aggregate data and forward it to the base station, so fewer nodes spend energy on long-distance transmission.\n\nThe work was published at the 2021 IEEE International Conference on Industry 4.0, Artificial Intelligence and Communications Technology.",
-      "results": [
-        "Published at an IEEE conference (2021)",
-        "Lower energy use through heterogeneous clustering"
-      ],
-      "tags": [
-        "IoT",
-        "Wireless networks",
-        "Energy efficiency",
-        "Simulation"
-      ],
-      "link": "https://scholar.google.com/citations?user=bwlKSNcAAAAJ&hl=en",
-      "id": "7e4aa96c"
-    },
-    {
-      "title": "Remote home monitoring system",
-      "slug": "remote-home-monitoring",
-      "year": "2016",
-      "context": "B.Sc. thesis",
-      "image": "static:img/architecture/home-monitoring.svg",
-      "summary": "Design and implementation of a system for monitoring a home remotely.",
-      "details": "My bachelor's thesis covered the design and implementation of a remote home monitoring system: sensors in the home report their state to a central service, which users can check remotely.",
-      "results": [
-        "Designed and implemented end to end"
-      ],
-      "tags": [
-        "IoT",
-        "Sensors",
-        "Networking"
-      ],
-      "link": "",
-      "id": "6f2ff193"
-    },
-    {
-      "title": "This website — secure Flask portfolio with CI/CD",
-      "slug": "this-website",
-      "year": "2026",
-      "context": "Personal project · open source",
-      "image": "static:img/architecture/website.svg",
-      "summary": "The site you are reading: a Python/Flask app with a two-factor-protected content editor, automated security testing and two deployment targets.",
-      "details": "Content is edited in a private admin panel (password + two-factor login, CSRF protection, rate limiting, audit log) and stored as validated JSON.\n\nEvery push runs GitHub Actions: 44 unit and security tests, Bandit and pip-audit, CodeQL scanning and a Docker build. The same Flask code is then frozen into a static site and deployed to GitHub Pages with a strict Content-Security-Policy. For a custom domain it ships as a hardened container: non-root, read-only filesystem, gunicorn behind Caddy with automatic HTTPS.",
-      "results": [
-        "44 automated tests on every push",
-        "Deployed automatically by GitHub Actions",
-        "No cookies, no trackers, strict CSP"
-      ],
-      "tags": [
-        "Python",
-        "Flask",
-        "GitHub Actions",
-        "Docker",
-        "Caddy",
-        "CodeQL"
-      ],
-      "link": "https://github.com/Moasses/moasses.github.io",
-      "id": "81c0400b"
     }
   ],
   "layers": [
