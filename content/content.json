@@ -8,9 +8,9 @@
       "Researcher,",
       "and Developer"
     ],
-    "tagline": "AWS · Terraform · Jenkins · Docker · Kubernetes · CI/CD",
+    "tagline": "AWS · Terraform · Kubernetes · CI/CD",
     "location": "Berlin, Germany · Open to relocation",
-    "intro": "DevOps engineer in Berlin with an M.Sc. in Software Engineering, some years of Java experience, and 2.5 years as a research associate at TU Berlin. I build CI/CD pipelines, provision AWS with Terraform and run containers on Docker and Kubernetes. Open to DevOps and Cloud Engineering roles.",
+    "intro": "DevOps engineer in Berlin with an M.Sc. in Software Engineering, 3 years of Java backend development and 2.5 years as a research associate at TU Berlin. I build CI/CD pipelines, provision AWS with Terraform and run containers on Docker and Kubernetes. Open to DevOps and Cloud Engineering roles.",
     "email": "armin.moasses@gmail.com",
     "phone": "",
     "show_phone": false,
@@ -339,7 +339,7 @@
       "year": "2023–2025",
       "context": "Research at TU Berlin · DFG project with TU Dortmund",
       "image": "static:img/architecture/optifaas.svg",
-      "summary": "My Role: Event-driven Java prototypes and benchmarking experiments for a research project on the optimal, adaptive placement of FaaS functions.",
+      "summary": "Event-driven Java prototypes and benchmarking experiments for a research project on the optimal, adaptive placement of FaaS functions.",
       "details": "OptiFaaS is a DFG-funded research project of TU Berlin and TU Dortmund. It asks how Function-as-a-Service workloads can be placed and scheduled across cloud, edge and fog so that they meet their latency, cost and privacy goals, taking data locality and cold starts into account.\n\nMy part was the experimental side: I designed and developed event-driven, distributed software prototypes in Java, deployed them with Docker on Linux, AWS Lambda and Google Cloud Functions, and ran benchmarking experiments to measure scalability, concurrency and performance. I coordinated with the external project partners and onboarded and supervised a student research assistant.",
       "results": [
         "Event-driven prototypes on two cloud FaaS platforms",
@@ -549,9 +549,9 @@
       "id": "f61ccfbf"
     },
     {
-      "title": "DTZ and Integration Course: German B1",
-      "issuer": "",
-      "date": "January 2026",
+      "title": "German B1 DTZ and Integration & Orientation Course",
+      "issuer": "Telc",
+      "date": "2026",
       "url": "",
       "id": "89abd0c8"
     },
