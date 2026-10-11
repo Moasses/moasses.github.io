@@ -8,9 +8,9 @@
       "Researcher,",
       "and Developer"
     ],
-    "tagline": "DevOps Engineer · Berlin, Germany",
+    "tagline": "AWS · Terraform · Jenkins · Docker · Kubernetes · CI/CD",
     "location": "Berlin, Germany · Open to relocation",
-    "intro": "I am a DevOps engineer with an M.Sc. in Software Engineering and 2.5 years of research developing distributed prototypes at TU Berlin. I work with Linux, Docker, Kubernetes, Jenkins CI/CD, Terraform, Ansible and AWS, backed by a programming background in Java and Python. I care about reproducible benchmarks, clear technical documentation and infrastructure that teams can trust.",
+    "intro": "DevOps engineer in Berlin with an M.Sc. in Software Engineering, some years of Java experience, and 2.5 years as a research associate at TU Berlin. I build CI/CD pipelines, provision AWS with Terraform and run containers on Docker and Kubernetes. Open to DevOps and Cloud Engineering roles.",
     "email": "armin.moasses@gmail.com",
     "phone": "",
     "show_phone": false,
