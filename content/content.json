@@ -377,6 +377,30 @@
       ],
       "link": "",
       "id": "6f2ff193"
+    },
+    {
+      "title": "This website — secure Flask portfolio with CI/CD",
+      "slug": "this-website",
+      "year": "2026",
+      "context": "Personal project · open source",
+      "image": "static:img/architecture/website.svg",
+      "summary": "The site you are reading: a Python/Flask app with a two-factor-protected content editor, automated security testing and two deployment targets.",
+      "details": "Content is edited in a private admin panel (password + two-factor login, CSRF protection, rate limiting, audit log) and stored as validated JSON.\n\nEvery push runs GitHub Actions: 44 unit and security tests, Bandit and pip-audit, CodeQL scanning and a Docker build. The same Flask code is then frozen into a static site and deployed to GitHub Pages with a strict Content-Security-Policy. For a custom domain it ships as a hardened container: non-root, read-only filesystem, gunicorn behind Caddy with automatic HTTPS.",
+      "results": [
+        "44 automated tests on every push",
+        "Deployed automatically by GitHub Actions",
+        "No cookies, no trackers, strict CSP"
+      ],
+      "tags": [
+        "Python",
+        "Flask",
+        "GitHub Actions",
+        "Docker",
+        "Caddy",
+        "CodeQL"
+      ],
+      "link": "https://github.com/Moasses/moasses.github.io",
+      "id": "81c0400b"
     }
   ],
   "layers": [
