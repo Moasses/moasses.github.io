@@ -1,7 +1,16 @@
 {% extends "base.html" %}
 {% import "partials/blocks.html" as b with context %}
 {% block content %}
-<p class="intro">{{ content.profile.intro }}</p>
+{% set pr = content.profile %}
+<div class="hero-text">
+  {% if pr.tagline %}<p class="lead">{{ pr.tagline }}</p>{% endif %}
+  <p class="intro">{{ pr.intro }}</p>
+  <p class="cta">
+    <a class="btn" href="#projects">See my projects</a>
+    {% if pr.email %}{% set parts = pr.email.split('@', 1) %}<a class="btn btn-ghost mail" href="#" data-u="{{ parts[0] }}" data-d="{{ parts[1] }}">Contact me</a>{% endif %}
+    {% if pr.cv_file %}<a class="btn btn-ghost" href="{{ media_url(pr.cv_file) }}" download>Download CV</a>{% endif %}
+  </p>
+</div>
 
 {% for s in content.sections %}
 <section class="section" id="{{ s.slug }}" aria-labelledby="h-{{ s.slug }}">

@@ -8,9 +8,9 @@
       "Researcher,",
       "and Developer"
     ],
-    "tagline": "DevOps Engineer · Berlin, Germany",
+    "tagline": "AWS · Terraform · Jenkins · Docker · Kubernetes · CI/CD",
     "location": "Berlin, Germany · Open to relocation",
-    "intro": "I am a DevOps engineer with an M.Sc. in Software Engineering and 2.5 years of research developing distributed prototypes at TU Berlin. I work with Linux, Docker, Kubernetes, Jenkins CI/CD, Terraform, Ansible and AWS, backed by a programming background in Java and Python. I care about reproducible benchmarks, clear technical documentation and infrastructure that teams can trust.",
+    "intro": "DevOps engineer in Berlin with an M.Sc. in Software Engineering, some years of Java experience, and 2.5 years as a research associate at TU Berlin. I build CI/CD pipelines, provision AWS with Terraform and run containers on Docker and Kubernetes. Open to DevOps and Cloud Engineering roles.",
     "email": "armin.moasses@gmail.com",
     "phone": "",
     "show_phone": false,
@@ -38,13 +38,13 @@
       "stats": [
         {
           "value": "9",
-          "label": "stage Jenkins pipeline",
-          "note": "Git → infrastructure → image → deploy"
+          "label": "stage CI/CD pipeline",
+          "note": "Jenkins · Terraform · Ansible · Docker"
         },
         {
-          "value": "8",
-          "label": "AWS services",
-          "note": "in one multi-tier environment"
+          "value": "44",
+          "label": "automated tests on every push",
+          "note": "this website · GitHub Actions"
         }
       ],
       "categories": [
@@ -62,7 +62,7 @@
     {
       "title": "As a Researcher",
       "slug": "researcher",
-      "text": "At Technische Universität Berlin I worked on OptiFaaS, a DFG-funded research project on Function-as-a-Service and event-driven cloud architectures, building distributed prototypes and repeatable benchmarks with an international research team.",
+      "text": "At TU Berlin I worked on OptiFaaS, a DFG-funded research project of TU Berlin and TU Dortmund on the optimal and adaptive allocation of Function-as-a-Service resources across cloud, edge and fog. I designed event-driven, distributed Java prototypes and ran benchmarking experiments on serverless platforms.",
       "headline": [
         "OptiFaaS",
         "Serverless",
@@ -72,18 +72,18 @@
       "stats": [
         {
           "value": "2.5",
-          "label": "years of research",
-          "note": "at TU Berlin"
+          "label": "years as research associate",
+          "note": "TU Berlin"
+        },
+        {
+          "value": "2",
+          "label": "serverless platforms benchmarked",
+          "note": "AWS Lambda · Google Cloud Functions"
         },
         {
           "value": "1",
           "label": "IEEE publication",
           "note": "Industry 4.0, AI & Communications 2021"
-        },
-        {
-          "value": "2",
-          "label": "theses",
-          "note": "IoT energy efficiency · home monitoring"
         }
       ],
       "categories": [
@@ -101,7 +101,7 @@
     {
       "title": "As a Developer",
       "slug": "developer",
-      "text": "Before moving into DevOps I built backend services: Java and Spring Boot APIs for Android applications, in an Agile team following Scrum — and I taught programming, networking and cloud computing at university.",
+      "text": "Before DevOps I spent 3 years building Java and Spring Boot backend services for Android apps in a Scrum team, and I taught programming, networking and cloud computing labs at university.",
       "headline": [
         "Java",
         "Spring Boot",
@@ -114,16 +114,10 @@
           "value": "3+",
           "label": "years of backend development",
           "note": "Java · Spring Boot · Maven"
-        },
-        {
-          "value": "2",
-          "label": "university teaching roles",
-          "note": "lecturer & teaching assistant"
         }
       ],
       "categories": [
-        "development",
-        "teaching"
+        "development"
       ],
       "show_layers": false,
       "layers_footer": "",
@@ -193,10 +187,11 @@
       "end": "Sep 2025",
       "category": "research",
       "bullets": [
-        "Worked on OptiFaaS, a DFG-funded project on Function-as-a-Service and event-driven cloud architectures.",
-        "Developed distributed software prototypes using Java, Docker, Linux, AWS Lambda and Google Cloud Functions.",
-        "Built repeatable benchmarks to evaluate scalability, concurrency and performance across distributed workloads.",
-        "Documented implementations and benchmark results for collaboration within an international research team."
+        "Worked on OptiFaaS, a DFG-funded project of TU Berlin and TU Dortmund on optimal and adaptive allocation of Function-as-a-Service resources.",
+        "Designed and developed event-driven, distributed software prototypes in Java, deployed with Docker on Linux, AWS Lambda and Google Cloud Functions.",
+        "Planned and ran benchmarking experiments on serverless systems and analysed the results for scalability, concurrency and performance.",
+        "Coordinated and collaborated with external project partners.",
+        "Onboarded, trained and supervised a student research assistant."
       ],
       "id": "60787a08"
     },
@@ -265,27 +260,28 @@
   ],
   "projects": [
     {
-      "title": "Nine-stage Jenkins CI/CD pipeline",
-      "slug": "jenkins-rental-car-pipeline",
+      "title": "This website — secure Flask portfolio with CI/CD",
+      "slug": "this-website",
       "year": "2026",
-      "context": "AWS Cloud & DevOps training",
-      "image": "static:img/architecture/jenkins-pipeline.svg",
-      "summary": "An end-to-end Jenkins pipeline for a rental-car application that connects Git, infrastructure provisioning, Docker image builds and deployment.",
-      "details": "The pipeline turns every push into a reproducible delivery: the code is checked out, infrastructure is provisioned with Terraform, servers are configured with Ansible, the application is built into Docker images and pushed to a registry, and the new version is deployed.\n\nEach stage is a separate, observable step, so a failure is easy to locate and the whole flow can be re-run from a clean state.",
+      "context": "Personal project · open source",
+      "image": "static:img/architecture/website.svg",
+      "summary": "The site you are reading: a Python/Flask app with a two-factor-protected content editor, automated security testing and two deployment targets.",
+      "details": "Content is edited in a private admin panel (password + two-factor login, CSRF protection, rate limiting, audit log) and stored as validated JSON.\n\nEvery push runs GitHub Actions: 44 unit and security tests, Bandit and pip-audit, CodeQL scanning and a Docker build. The same Flask code is then frozen into a static site and deployed to GitHub Pages with a strict Content-Security-Policy. For a custom domain it ships as a hardened container: non-root, read-only filesystem, gunicorn behind Caddy with automatic HTTPS.",
       "results": [
-        "9 automated stages from commit to deployment",
-        "Infrastructure and app delivered by one pipeline",
-        "Repeatable runs from a clean state"
+        "44 automated tests on every push",
+        "Deployed automatically by GitHub Actions",
+        "No cookies, no trackers, strict CSP"
       ],
       "tags": [
-        "Jenkins",
-        "Git",
-        "Terraform",
-        "Ansible",
-        "Docker"
+        "Python",
+        "Flask",
+        "GitHub Actions",
+        "Docker",
+        "Caddy",
+        "CodeQL"
       ],
-      "link": "",
-      "id": "951d84c1"
+      "link": "https://github.com/Moasses/moasses.github.io",
+      "id": "81c0400b"
     },
     {
       "title": "Multi-tier AWS environment with Terraform",
@@ -315,17 +311,40 @@
       "id": "9608a309"
     },
     {
-      "title": "OptiFaaS — serverless benchmarking",
+      "title": "Nine-stage Jenkins CI/CD pipeline",
+      "slug": "jenkins-rental-car-pipeline",
+      "year": "2026",
+      "context": "AWS Cloud & DevOps training",
+      "image": "static:img/architecture/jenkins-pipeline.svg",
+      "summary": "An end-to-end Jenkins pipeline for a rental-car application that connects Git, infrastructure provisioning, Docker image builds and deployment.",
+      "details": "The pipeline turns every push into a reproducible delivery: the code is checked out, infrastructure is provisioned with Terraform, servers are configured with Ansible, the application is built into Docker images and pushed to a registry, and the new version is deployed.\n\nEach stage is a separate, observable step, so a failure is easy to locate and the whole flow can be re-run from a clean state.",
+      "results": [
+        "9 automated stages from commit to deployment",
+        "Infrastructure and app delivered by one pipeline",
+        "Repeatable runs from a clean state"
+      ],
+      "tags": [
+        "Jenkins",
+        "Git",
+        "Terraform",
+        "Ansible",
+        "Docker"
+      ],
+      "link": "",
+      "id": "951d84c1"
+    },
+    {
+      "title": "OptiFaaS — benchmarking serverless platforms",
       "slug": "optifaas-benchmarks",
       "year": "2023–2025",
-      "context": "Research at TU Berlin (DFG-funded)",
+      "context": "Research at TU Berlin · DFG project with TU Dortmund",
       "image": "static:img/architecture/optifaas.svg",
-      "summary": "Distributed prototypes and repeatable benchmarks for Function-as-a-Service and event-driven cloud architectures.",
-      "details": "Within the OptiFaaS research project I developed distributed software prototypes in Java and deployed them on AWS Lambda and Google Cloud Functions, packaged with Docker on Linux.\n\nI built repeatable benchmarks to evaluate scalability, concurrency and performance across distributed workloads, and documented implementations and results for an international research team.",
+      "summary": "My Role: Event-driven Java prototypes and benchmarking experiments for a research project on the optimal, adaptive placement of FaaS functions.",
+      "details": "OptiFaaS is a DFG-funded research project of TU Berlin and TU Dortmund. It asks how Function-as-a-Service workloads can be placed and scheduled across cloud, edge and fog so that they meet their latency, cost and privacy goals, taking data locality and cold starts into account.\n\nMy part was the experimental side: I designed and developed event-driven, distributed software prototypes in Java, deployed them with Docker on Linux, AWS Lambda and Google Cloud Functions, and ran benchmarking experiments to measure scalability, concurrency and performance. I coordinated with the external project partners and onboarded and supervised a student research assistant.",
       "results": [
-        "Repeatable benchmark setup across two cloud providers",
-        "Scalability & concurrency evaluated on real workloads",
-        "Results documented for an international team"
+        "Event-driven prototypes on two cloud FaaS platforms",
+        "Benchmarking experiments with analysed results",
+        "Supervised a student research assistant"
       ],
       "tags": [
         "Java",
@@ -336,46 +355,6 @@
       ],
       "link": "",
       "id": "2ca9d637"
-    },
-    {
-      "title": "HetEng — energy-efficient IoT clustering",
-      "slug": "heteng-iot-clustering",
-      "year": "2021",
-      "context": "M.Sc. thesis · IEEE publication",
-      "image": "static:img/architecture/heteng.svg",
-      "summary": "An improved distributed, energy-efficient clustering scheme for heterogeneous IoT networks.",
-      "details": "My master's thesis studied how heterogeneous clustering can reduce power consumption in IoT networks. Nodes are organised into clusters whose heads aggregate data and forward it to the base station, so fewer nodes spend energy on long-distance transmission.\n\nThe work was published at the 2021 IEEE International Conference on Industry 4.0, Artificial Intelligence and Communications Technology.",
-      "results": [
-        "Published at an IEEE conference (2021)",
-        "Lower energy use through heterogeneous clustering"
-      ],
-      "tags": [
-        "IoT",
-        "Wireless networks",
-        "Energy efficiency",
-        "Simulation"
-      ],
-      "link": "https://scholar.google.com/citations?user=bwlKSNcAAAAJ&hl=en",
-      "id": "7e4aa96c"
-    },
-    {
-      "title": "Remote home monitoring system",
-      "slug": "remote-home-monitoring",
-      "year": "2016",
-      "context": "B.Sc. thesis",
-      "image": "static:img/architecture/home-monitoring.svg",
-      "summary": "Design and implementation of a system for monitoring a home remotely.",
-      "details": "My bachelor's thesis covered the design and implementation of a remote home monitoring system: sensors in the home report their state to a central service, which users can check remotely.",
-      "results": [
-        "Designed and implemented end to end"
-      ],
-      "tags": [
-        "IoT",
-        "Sensors",
-        "Networking"
-      ],
-      "link": "",
-      "id": "6f2ff193"
     }
   ],
   "layers": [
@@ -647,7 +626,7 @@
   ],
   "legal": {
     "show_imprint": false,
-    "imprint": "Armin Moasses\n[Street and house number]\n[Postcode] Berlin\nGermany\n\nEmail: armin.moasses@gmail.com",
+    "imprint": "Armin Moasses\nBerlin\nGermany\n\nEmail: armin.moasses[at]gmail.com",
     "privacy": "This website does not use cookies, analytics or tracking, and it does not load any fonts, scripts or images from third parties.\n\nWhen you visit the site, the web server temporarily processes technical data that your browser sends automatically (IP address, date and time, requested page, browser type). This is necessary to deliver the website securely (Art. 6(1)(f) GDPR). Server logs are deleted after 14 days.\n\nIf you contact me by email, I use your message only to reply to you.\n\nYou have the right to access, rectify and erase your data, and to lodge a complaint with a data protection supervisory authority. Contact: armin.moasses@gmail.com"
   }
 }

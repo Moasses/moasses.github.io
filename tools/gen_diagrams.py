@@ -108,9 +108,24 @@ def home():
     return s + "</svg>"
 
 
+def website():
+    s = head(340) + label(240, 22, "This website · build and deploy", 13, "middle", W)
+    s += box(20, 44, 130, 56, "Admin panel", "password + 2FA") + ar(150, 72, 186, 72)
+    s += box(190, 44, 120, 56, "content.json", "validated") + ar(310, 72, 346, 72)
+    s += box(350, 44, 110, 56, "git push", "GitHub")
+    s += ar(405, 100, 405, 128)
+    s += area(16, 132, 448, 92, "GitHub Actions")
+    s += box(30, 156, 130, 52, "Tests", "unit · security") + ar(160, 182, 176, 182)
+    s += box(180, 156, 120, 52, "Scans", "Bandit · CodeQL") + ar(300, 182, 316, 182)
+    s += box(320, 156, 130, 52, "Static build", "Flask freeze")
+    s += ar(385, 208, 385, 256) + box(320, 260, 130, 52, "GitHub Pages", "HTTPS · CSP")
+    s += box(30, 260, 130, 52, "Docker", "gunicorn · Caddy") + ar(160, 286, 190, 286)
+    s += box(194, 260, 106, 52, ".eu server", "option")
+    return s + label(24, 332, "Same Flask code → static site or hardened container", 10, color=D) + "</svg>"
+
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
     for name, fn in [("jenkins-pipeline", jenkins), ("aws-multi-tier", aws), ("optifaas", optifaas),
-                     ("heteng", heteng), ("home-monitoring", home)]:
+                     ("heteng", heteng), ("home-monitoring", home), ("website", website)]:
         (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
         print("wrote", name)
