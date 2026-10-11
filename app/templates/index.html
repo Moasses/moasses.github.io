@@ -7,7 +7,9 @@
   <p class="intro">{{ pr.intro }}</p>
   <p class="cta">
     <a class="btn" href="#projects">See my projects</a>
-    {% if pr.email %}{% set parts = pr.email.split('@', 1) %}<a class="btn btn-ghost mail" href="#" data-u="{{ parts[0] }}" data-d="{{ parts[1] }}">Contact me</a>{% endif %}
+    {% if pr.email %}{% set parts = pr.email.split('@', 1) %}<a class="btn btn-ghost mail" href="#" data-u="{{ parts[0] }}" data-d="{{ parts[1] }}">Email me</a>{% endif %}
+    {% if pr.linkedin %}<a class="btn btn-ghost" href="{{ pr.linkedin }}" rel="noopener noreferrer me" target="_blank">LinkedIn</a>{% endif %}
+    {% if pr.xing %}<a class="btn btn-ghost" href="{{ pr.xing }}" rel="noopener noreferrer me" target="_blank">XING</a>{% endif %}
     {% if pr.cv_file %}<a class="btn btn-ghost" href="{{ media_url(pr.cv_file) }}" download>Download CV</a>{% endif %}
   </p>
 </div>

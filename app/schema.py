@@ -85,6 +85,7 @@ PROFILE = Collection(
         Field("show_phone", "Show phone number publicly", "bool",
               help="Off by default: public numbers attract spam."),
         Field("linkedin", "LinkedIn URL", "url"),
+        Field("xing", "XING URL", "url"),
         Field("github", "GitHub URL", "url"),
         Field("scholar", "Google Scholar URL", "url"),
         Field("cv_file", "CV (PDF)", "file", help="Upload the PDF in Media first."),

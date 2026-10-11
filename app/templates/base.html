@@ -44,6 +44,7 @@
         {% if pr.email %}{{ email_link(pr.email) }}{% endif %}
         {% if pr.phone and pr.show_phone %}<a href="tel:{{ pr.phone | replace(' ', '') }}">{{ pr.phone }}</a>{% endif %}
         {% if pr.linkedin %}<a href="{{ pr.linkedin }}" rel="noopener noreferrer me" target="_blank">LinkedIn</a>{% endif %}
+        {% if pr.xing %}<a href="{{ pr.xing }}" rel="noopener noreferrer me" target="_blank">XING</a>{% endif %}
         {% if pr.github %}<a href="{{ pr.github }}" rel="noopener noreferrer me" target="_blank">GitHub</a>{% endif %}
         {% if pr.scholar %}<a href="{{ pr.scholar }}" rel="noopener noreferrer" target="_blank">Google Scholar</a>{% endif %}
         {% if pr.cv_file %}<a href="{{ media_url(pr.cv_file) }}" target="_blank" rel="noopener">CV (PDF)</a>{% endif %}
