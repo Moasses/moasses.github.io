@@ -298,3 +298,8 @@ img { max-width: 100%; display: block; }
 .btn-ghost { background: transparent; color: var(--navy); box-shadow: inset 0 0 0 2px var(--gold); }
 .btn-ghost:hover { background: var(--gold); color: #fff; }
 @media (max-width: 980px) { .hero-text { margin-bottom: 90px; } }
+
+   /* readability: sans-serif for running text, Kode Mono for names, headings and numbers */
+   :root { --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+   .content p, .content li { font-family: var(--font-body); }
+   .tags li, .results li, .meta-line { font-family: var(--font); }
