@@ -62,7 +62,7 @@
     {
       "title": "As a Researcher",
       "slug": "researcher",
-      "text": "At Technische Universität Berlin I worked on OptiFaaS, a DFG-funded research project on Function-as-a-Service and event-driven cloud architectures, building distributed prototypes and repeatable benchmarks with an international research team.",
+      "text": "At TU Berlin I worked on OptiFaaS, a DFG-funded research project of TU Berlin and TU Dortmund on the optimal and adaptive allocation of Function-as-a-Service resources across cloud, edge and fog. I designed event-driven, distributed Java prototypes and ran benchmarking experiments on serverless platforms.",
       "headline": [
         "OptiFaaS",
         "Serverless",
@@ -72,18 +72,18 @@
       "stats": [
         {
           "value": "2.5",
-          "label": "years of research",
-          "note": "at TU Berlin"
+          "label": "years as research associate",
+          "note": "TU Berlin"
+        },
+        {
+          "value": "2",
+          "label": "serverless platforms benchmarked",
+          "note": "AWS Lambda · Google Cloud Functions"
         },
         {
           "value": "1",
           "label": "IEEE publication",
           "note": "Industry 4.0, AI & Communications 2021"
-        },
-        {
-          "value": "2",
-          "label": "theses",
-          "note": "IoT energy efficiency · home monitoring"
         }
       ],
       "categories": [
@@ -193,10 +193,11 @@
       "end": "Sep 2025",
       "category": "research",
       "bullets": [
-        "Worked on OptiFaaS, a DFG-funded project on Function-as-a-Service and event-driven cloud architectures.",
-        "Developed distributed software prototypes using Java, Docker, Linux, AWS Lambda and Google Cloud Functions.",
-        "Built repeatable benchmarks to evaluate scalability, concurrency and performance across distributed workloads.",
-        "Documented implementations and benchmark results for collaboration within an international research team."
+        "Worked on OptiFaaS, a DFG-funded project of TU Berlin and TU Dortmund on optimal and adaptive allocation of Function-as-a-Service resources.",
+        "Designed and developed event-driven, distributed software prototypes in Java, deployed with Docker on Linux, AWS Lambda and Google Cloud Functions.",
+        "Planned and ran benchmarking experiments on serverless systems and analysed the results for scalability, concurrency and performance.",
+        "Coordinated and collaborated with external project partners.",
+        "Onboarded, trained and supervised a student research assistant."
       ],
       "id": "60787a08"
     },
@@ -315,17 +316,17 @@
       "id": "9608a309"
     },
     {
-      "title": "OptiFaaS — serverless benchmarking",
+      "title": "OptiFaaS — benchmarking serverless platforms",
       "slug": "optifaas-benchmarks",
       "year": "2023–2025",
-      "context": "Research at TU Berlin (DFG-funded)",
+      "context": "Research at TU Berlin · DFG project with TU Dortmund",
       "image": "static:img/architecture/optifaas.svg",
-      "summary": "Distributed prototypes and repeatable benchmarks for Function-as-a-Service and event-driven cloud architectures.",
-      "details": "Within the OptiFaaS research project I developed distributed software prototypes in Java and deployed them on AWS Lambda and Google Cloud Functions, packaged with Docker on Linux.\n\nI built repeatable benchmarks to evaluate scalability, concurrency and performance across distributed workloads, and documented implementations and results for an international research team.",
+      "summary": "My Role: Event-driven Java prototypes and benchmarking experiments for a research project on the optimal, adaptive placement of FaaS functions.",
+      "details": "OptiFaaS is a DFG-funded research project of TU Berlin and TU Dortmund. It asks how Function-as-a-Service workloads can be placed and scheduled across cloud, edge and fog so that they meet their latency, cost and privacy goals, taking data locality and cold starts into account.\n\nMy part was the experimental side: I designed and developed event-driven, distributed software prototypes in Java, deployed them with Docker on Linux, AWS Lambda and Google Cloud Functions, and ran benchmarking experiments to measure scalability, concurrency and performance. I coordinated with the external project partners and onboarded and supervised a student research assistant.",
       "results": [
-        "Repeatable benchmark setup across two cloud providers",
-        "Scalability & concurrency evaluated on real workloads",
-        "Results documented for an international team"
+        "Event-driven prototypes on two cloud FaaS platforms",
+        "Benchmarking experiments with analysed results",
+        "Supervised a student research assistant"
       ],
       "tags": [
         "Java",
@@ -647,7 +648,7 @@
   ],
   "legal": {
     "show_imprint": false,
-    "imprint": "Armin Moasses\n[Street and house number]\n[Postcode] Berlin\nGermany\n\nEmail: armin.moasses@gmail.com",
+    "imprint": "Armin Moasses\nBerlin\nGermany\n\nEmail: armin.moasses[at]gmail.com",
     "privacy": "This website does not use cookies, analytics or tracking, and it does not load any fonts, scripts or images from third parties.\n\nWhen you visit the site, the web server temporarily processes technical data that your browser sends automatically (IP address, date and time, requested page, browser type). This is necessary to deliver the website securely (Art. 6(1)(f) GDPR). Server logs are deleted after 14 days.\n\nIf you contact me by email, I use your message only to reply to you.\n\nYou have the right to access, rectify and erase your data, and to lodge a complaint with a data protection supervisory authority. Contact: armin.moasses@gmail.com"
   }
 }
