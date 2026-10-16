@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 # ---------- build stage: install dependencies into a virtualenv ----------
-FROM python:3.13-slim AS build
+FROM python:3.14-slim AS build
 ENV PIP_NO_CACHE_DIR=1 PIP_DISABLE_PIP_VERSION_CHECK=1
 WORKDIR /src
 COPY requirements.txt .
@@ -9,7 +9,7 @@ COPY tools/fetch_fonts.py tools/fetch_fonts.py
 RUN mkdir -p app/static/fonts && (/venv/bin/python tools/fetch_fonts.py || echo "font download skipped")
 
 # ---------- runtime stage: minimal, non-root, read-only code ----------
-FROM python:3.13-slim
+FROM python:3.14-slim
 RUN useradd --uid 10001 --no-create-home --shell /usr/sbin/nologin app \
  && mkdir -p /data && chown app:app /data
 WORKDIR /srv/app
